@@ -108,7 +108,7 @@ def draw_cell_PCE_overview(data_list):
         )
     fig.update_layout(title='PCE', 
                       #width = 800,
-                      height = 800,
+                      height = 600,
                       xaxis = dict(
                           tickmode = 'array',
                           tickvals = categories
@@ -142,7 +142,7 @@ def draw_cell_PCE_overview_ratio(data_list):
         )
     fig.update_layout(title='PCE Ratio',
                       #width = 800,
-                      height = 800,
+                      height = 600,
                       xaxis = dict(
                           tickmode = 'array',
                           tickvals = categories
@@ -166,14 +166,14 @@ def draw_cell_performance(data_list):
             ))
         fig.update_layout(
             #width = 800,
-            height = 800,
+            height = 600,
             polar=dict(
                 radialaxis=dict(
                     visible=True,
                     title=dict(
                         text = i['test_type'] + ': '+i['cell_name'],
                         font=dict(
-                            size = 40
+                            size = 30
                         )
                     )
                     #i['test_type'] + ': '+i['cell_name'],
