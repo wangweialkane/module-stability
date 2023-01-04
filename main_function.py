@@ -6,7 +6,7 @@ import numpy as np
 #import plotly
 #import plotly.express as px
 import plotly.graph_objects as go
-
+from IPython.display import display
 
 test_name =['damp-heat','light-cycle','mpp'] 
 damp_heat= 'damp-heat'
@@ -155,14 +155,21 @@ def draw_cell_performance(data_list):
     draw 'Voc_r','Jsc_r','FF_r','PCE_r','Voc_f','Jsc_f','FF_f','PCE_f' from each cell
     '''
     categories = ['Voc_r','Jsc_r','FF_r','PCE_r','Voc_f','Jsc_f','FF_f','PCE_f']
+    Columns = ['Hours', 'Voc_r','Jsc_r','FF_r','PCE_r','Voc_f','Jsc_f','FF_f','PCE_f']
     for i in data_list:
         fig = go.Figure()
-        for j in i['data_ratio']:
-            data = j[2:]
+        dataframe = []
+        for j in range(len(i['data_ratio'])):
+            data = i['data_ratio'][j][2:]
+            #datalist = i['cell_data'][j][2:]
+            datalist = i['cell_data'][j][2:]
+            datalist.insert(0, i['cell_data'][j][0])
+            #print(datalist)
+            dataframe.append(datalist)
             fig.add_trace(go.Scatterpolar(
             r=data,
             theta=categories,
-            name=str(j[0])
+            name=str(i['data_ratio'][j][0])
             ))
         fig.update_layout(
             #width = 800,
@@ -182,6 +189,7 @@ def draw_cell_performance(data_list):
             showlegend=True
             )
         fig.show()
+        display(pd.DataFrame(dataframe,columns=Columns))
 
 
 def read_performance(data_list):
