@@ -8,9 +8,9 @@ import numpy as np
 import plotly.graph_objects as go
 from IPython.display import display
 
-test_name =['damp-heat','light-cycle','mpp'] 
+test_name =['damp-heat','light-dark-cycle','mpp'] 
 damp_heat= 'damp-heat'
-light_cycle= 'light-cycle'
+light_cycle= 'light-dark-cycle'
 mpp= 'mpp'
 batch_name='old'
 
