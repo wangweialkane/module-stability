@@ -125,7 +125,7 @@ def draw_cell_PCE_overview_ratio(data_list):
         categories.extend(i['all_time'])
     categories = sorted(set(categories))
     fig = go.Figure()
-    
+    fig.add_hline(y=0.9)
     for i in data_list:
         cell_array = [np.nan]*len(categories)
         for j in i['max_pce_ratio']:
