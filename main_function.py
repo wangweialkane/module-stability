@@ -13,6 +13,7 @@ damp_heat= 'damp-heat'
 light_cycle= 'light-dark-cycle'
 mpp= 'mpp'
 batch_name='old'
+ignore_broken_cell = True
 
 
 def read_modules(folder):
@@ -78,7 +79,10 @@ def read_all_test():
         file_path='./'+batch_name+'/'+i+'/'
         name_list = read_modules(file_path)
         for j in name_list:
-            all_test_data.append(read_cell_pce(file_path,j))
+            if ("Broken" in j) and (ignore_broken_cell is True):
+                continue
+            else:
+                all_test_data.append(read_cell_pce(file_path,j))
     return(all_test_data)
 
 
